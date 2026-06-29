@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.6</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.github.switchover.example</groupId>
+    <artifactId>order-service</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>order-service</name>
+    <description>Order service example</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--
+        1. starter를 지정하지 않음: NoOp 구현체가 사용됨
+        2. audit-starter-console: Console 기반 구현체가 사용됨
+            - demo.audit.console-type=console 변경 / 기본값은 logger
+        3. audit-starter-dbms: DBMS 기반 구현체가 사용됨
+        -->
+        <dependency>
+            <groupId>com.github.switchover.example</groupId>
+            <artifactId>audit-starter-console</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- 추가 시, metrics 사용 가능 /actuator/prometheus 엔드포인트에서 확인 -->
+        <!-- -->
+        <dependency>
+            <groupId>com.github.switchover.example</groupId>
+            <artifactId>audit-starter-metrics</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>com.github.switchover.example</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

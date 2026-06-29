@@ -1,0 +1,20 @@
+demo:
+  audit:
+    application-name: order-service
+    #console-type: system_out
+
+spring:
+  jpa:
+    show-sql: true  # SQL을 출력
+    properties:
+      hibernate:
+        format_sql: true # SQL을 예쁘게 포맷팅
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE  # bind parameter 출력
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
