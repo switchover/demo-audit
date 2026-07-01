@@ -30,9 +30,21 @@
             - demo.audit.console-type=console 변경 / 기본값은 logger
         3. audit-starter-dbms: DBMS 기반 구현체가 사용됨
         -->
+<!--        <dependency>-->
+<!--            <groupId>com.github.switchover.example</groupId>-->
+<!--            <artifactId>audit-starter-console</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+
+        <!-- starter 미지정 시라도 Core/Spec 및 AutoConfigure 의존성은 필요 -->
         <dependency>
             <groupId>com.github.switchover.example</groupId>
-            <artifactId>audit-starter-console</artifactId>
+            <artifactId>audit-autoconfigure</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.switchover.example</groupId>
+            <artifactId>audit-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
